@@ -36,12 +36,12 @@ dataset = fetch_california_housing()
 df=pd.DataFrame(dataset.data,columns=dataset.feature_names)
 df['HousingPrice']=dataset.target
 print(df.head())
-'''
-![Screenshot 2024-10-16 070611](https://github.com/user-attachments/assets/581c24f4-98a7-4e1f-9a18-15e7a2acffe1)
-
 
 
 ```
+![Screenshot 2024-10-16 070611](https://github.com/user-attachments/assets/49b56fe7-2004-4f8f-bc64-233a47ff18de)
+
+
 
 ## Output:
 '''
