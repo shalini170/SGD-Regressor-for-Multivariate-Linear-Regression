@@ -41,6 +41,10 @@ print(df.head())
 ```
 ![Screenshot 2024-10-16 070611](https://github.com/user-attachments/assets/49b56fe7-2004-4f8f-bc64-233a47ff18de)
 
+```
+X = df.drop(columns=['AveOccup','HousingPrice'])
+X.info()
+
 
 
 ## Output:
