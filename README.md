@@ -44,6 +44,40 @@ print(df.head())
 ```
 X = df.drop(columns=['AveOccup','HousingPrice'])
 X.info()
+```
+![Screenshot 2024-10-16 070907](https://github.com/user-attachments/assets/0c80475d-9456-4e91-a275-d1b2ecaf847f)
+```
+Y = df[['AveOccup','HousingPrice']]
+Y.info()
+```
+![image](https://github.com/user-attachments/assets/c2c29fd8-2956-4524-ae80-2d87fa3bbb80)
+```
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+scaler_X = StandardScaler()
+scaler_Y = StandardScaler()
+X_train = scaler_X.fit_transform(X_train)
+X_test = scaler_X.transform(X_test)
+Y_train = scaler_Y.fit_transform(Y_train)
+Y_test = scaler_Y.transform(Y_test)
+sgd = SGDRegressor(max_iter=1000, tol=1e-3)
+multi_output_sgd = MultiOutputRegressor(sgd)
+multi_output_sgd.fit(X_train, Y_train)
+```
+![Screenshot 2024-10-16 071237](https://github.com/user-attachments/assets/21b9fa75-b645-412f-9c1c-d01bceb5679c)
+```
+Y_pred = multi_output_sgd.predict(X_test)
+Y_pred = scaler_Y.inverse_transform(Y_pred)
+Y_test = scaler_Y.inverse_transform(Y_test)
+mse = mean_squared_error(Y_test, Y_pred)
+print("Mean Squared Error:", mse)
+```
+![Screenshot 2024-10-16 071331](https://github.com/user-attachments/assets/42f7a046-ccf9-4412-a085-561de84e4b21)
+
+```
+print("\nPredictions:\n", Y_pred[:5])
+```
+
+
 
 
 
